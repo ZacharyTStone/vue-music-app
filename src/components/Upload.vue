@@ -49,6 +49,13 @@ export default {
     return {
       is_dragover: false,
       uploads: [],
+      audioTypes: [
+        "audio/mp3",
+        "audio/mpeg",
+        "audio/ogg",
+        "audio/wav",
+        "audio/x-m4a",
+      ],
     };
   },
   props: ["addSong"],
@@ -61,7 +68,9 @@ export default {
         : [...$event.target.files];
 
       files.forEach((file) => {
-        if (file.type !== "audio/mpeg") {
+        if (!this.audioTypes.includes(file.type)) {
+          console.log(file.type);
+          console.log("regecting file", file.name);
           return;
         }
 
