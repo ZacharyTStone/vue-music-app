@@ -13,4 +13,11 @@ module.exports = defineConfig({
       fullInstall: true,
     },
   },
+  pwa: {
+    name: "My Music",
+    themeColor: "##ff5e3a",
+    manifestOptions: {
+      sort_name: "My Music",
+    },
+  },
 });

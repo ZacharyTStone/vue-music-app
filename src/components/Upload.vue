@@ -49,13 +49,6 @@ export default {
     return {
       is_dragover: false,
       uploads: [],
-      audioTypes: [
-        "audio/mp3",
-        "audio/mpeg",
-        "audio/ogg",
-        "audio/wav",
-        "audio/x-m4a",
-      ],
     };
   },
   props: ["addSong"],
@@ -68,16 +61,24 @@ export default {
         : [...$event.target.files];
 
       files.forEach((file) => {
-        if (!this.audioTypes.includes(file.type)) {
-          console.log(file.type);
-          console.log("regecting file", file.name);
+        if (file.type !== "audio/mpeg") {
+          return;
+        }
+
+        if (!navigator.onLine) {
+          this.uploads.push({
+            task: {},
+            current_progress: 100,
+            name: file.name,
+            variant: "bg-red-400",
+            icon: "fas fa-times",
+            text_class: "text-red-400",
+          });
           return;
         }
 
         const storageRef = storage.ref(); // music-c2596.appspot.com
-        const songsRef = storageRef.child(
-          `songs/${file.name}` + (Math.random() * 100).toString().slice(0, 2)
-        ); // music-c2596.appspot.com/songs/example.mp3
+        const songsRef = storageRef.child(`songs/${file.name}`); // music-c2596.appspot.com/songs/example.mp3
         const task = songsRef.put(file);
 
         const uploadIndex =
@@ -109,7 +110,6 @@ export default {
               display_name: auth.currentUser.displayName,
               original_name: task.snapshot.ref.name,
               modified_name: task.snapshot.ref.name,
-              artist: "",
               genre: "",
               comment_count: 0,
             };

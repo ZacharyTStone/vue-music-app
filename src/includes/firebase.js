@@ -27,6 +27,11 @@ const auth = firebase.auth();
 const db = firebase.firestore();
 const storage = firebase.storage();
 
+// firebase keep the data locally
+db.enablePersistence().catch((err) => {
+  console.log("firebase persistence error", err);
+});
+
 const usersCollection = db.collection("users");
 const songsCollection = db.collection("songs");
 const commentsCollection = db.collection("comments");

@@ -8,6 +8,7 @@ import Icon from "./directives/Icon";
 import "./assets/tailwind.css";
 import "./assets/main.css";
 import i18n from "./includes/i18n";
+import "./registerServiceWorker";
 
 let app;
 
