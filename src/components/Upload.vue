@@ -109,6 +109,7 @@ export default {
               display_name: auth.currentUser.displayName,
               original_name: task.snapshot.ref.name,
               modified_name: task.snapshot.ref.name,
+              artist: "",
               genre: "",
               comment_count: 0,
             };

@@ -8,12 +8,12 @@
       ></div>
       <div class="container mx-auto">
         <div class="text-white main-header-content">
-          <h1 class="font-bold text-5xl mb-5">Listen to Great Music!</h1>
+          <!-- Introducting Heading -->
+          <h1 class="font-bold text-5xl mb-5">
+            {{ $t("home.listen") }}
+          </h1>
           <p class="w-full md:w-8/12 mx-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-            et dolor mollis, congue augue non, venenatis elit. Nunc justo eros,
-            suscipit ac aliquet imperdiet, venenatis et sapien. Duis sed magna
-            pulvinar, fringilla lorem eget, ullamcorper urna.
+            {{ $t("home.about") }}
           </p>
         </div>
       </div>
@@ -49,7 +49,7 @@
 <script>
 import { songsCollection } from "@/includes/firebase";
 import AppSongItem from "@/components/AppSongItem.vue";
-import IconSecondary from "../directives/icon-secondary.js";
+import IconSecondary from "@/directives/icon-secondary";
 
 export default {
   name: "Home",
@@ -57,7 +57,7 @@ export default {
     AppSongItem,
   },
   directives: {
-    IconSecondary,
+    "icon-secondary": IconSecondary,
   },
   data() {
     return {

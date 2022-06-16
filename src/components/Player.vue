@@ -26,7 +26,8 @@
           v-if="currentSong.modified_name"
         >
           <span class="song-title">{{ currentSong.modified_name }}</span>
-          Uploaded by
+          - <span class="song-artist">{{ currentSong.artist }}</span>
+          uploaded by
           <span class="song-artist">{{ currentSong.display_name }}</span>
         </div>
         <span

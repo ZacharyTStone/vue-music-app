@@ -40,6 +40,17 @@
           <ErrorMessage class="text-red-600" name="modified_name" />
         </div>
         <div class="mb-3">
+          <label class="inline-block mb-2">Song Artist</label>
+          <vee-field
+            type="text"
+            name="artist"
+            class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
+            placeholder="Enter Song Artist"
+            @input="updateUnsavedFlag(true)"
+          />
+          <ErrorMessage class="text-red-600" name="artist" />
+        </div>
+        <div class="mb-3">
           <label class="inline-block mb-2">Genre</label>
           <vee-field
             type="text"
@@ -102,6 +113,7 @@ export default {
       schema: {
         modified_name: "required",
         genre: "alpha_spaces",
+        artist: "alpha_spaces",
       },
       in_submission: false,
       show_alert: false,

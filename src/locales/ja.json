@@ -1,0 +1,16 @@
+{
+  "home": {
+    "listen": "マイ・ミュージック",
+    "about": "新進気鋭のアーティストによる新曲を共有して聴く"
+  },
+  "manage": {
+    "my_songs": "マイ曲"
+  },
+  "register": {
+    "TOS": "利用規約",
+    "accept": "同意する"
+  },
+  "song": {
+    "comment_count": "{count} コメント | {count} コメント | {count} コメント"
+  }
+}
