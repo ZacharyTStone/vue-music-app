@@ -1,6 +1,7 @@
 import { createStore } from "vuex";
 import { auth, usersCollection } from "@/includes/firebase";
 import { Howl } from "howler";
+import helper from "@/includes/helper";
 
 export default createStore({
   state: {
@@ -8,6 +9,9 @@ export default createStore({
     userLoggedIn: false,
     currentSong: {},
     sound: {},
+    seek: "00:00",
+    duration: "00:00",
+    playerProgress: "0%",
   },
   mutations: {
     toggleAuthModal: (state) => {
@@ -16,17 +20,19 @@ export default createStore({
     toggleAuth(state) {
       state.userLoggedIn = !state.userLoggedIn;
     },
-
     newSong(state, payload) {
       state.currentSong = payload;
       state.sound = new Howl({
         src: [payload.url],
         html5: true,
-        onend: () => {
-          state.sound.pause();
-          state.sound.seek(0);
-        },
       });
+    },
+    updatePosition(state) {
+      state.seek = helper.formatTime(state.sound.seek());
+      state.duration = helper.formatTime(state.sound.duration());
+      state.playerProgress = `${
+        (state.sound.seek() / state.sound.duration()) * 100
+      }%`;
     },
   },
   getters: {
@@ -80,13 +86,21 @@ export default createStore({
       //   payload.router.push({ name: 'home' });
       // }
     },
+    async newSong({ commit, state, dispatch }, payload) {
+      if (state.sound instanceof Howl) {
+        state.sound.unload();
+      }
 
-    async newSong({ commit, state }, payload) {
       commit("newSong", payload);
 
       state.sound.play();
-    },
 
+      state.sound.on("play", () => {
+        requestAnimationFrame(() => {
+          dispatch("progress");
+        });
+      });
+    },
     async toggleAudio({ state }) {
       if (!state.sound.playing) {
         return;
@@ -97,6 +111,32 @@ export default createStore({
       } else {
         state.sound.play();
       }
+    },
+    progress({ commit, state, dispatch }) {
+      commit("updatePosition");
+
+      if (state.sound.playing()) {
+        requestAnimationFrame(() => {
+          dispatch("progress");
+        });
+      }
+    },
+    updateSeek({ state, dispatch }, payload) {
+      if (!state.sound.playing) {
+        return;
+      }
+
+      const { x, width } = payload.currentTarget.getBoundingClientRect();
+      // Document = 2000, Timeline = 1000, Click = 500, Distance = 500
+      const clickX = payload.clientX - x;
+      const percentage = clickX / width;
+      const seconds = state.sound.duration() * percentage;
+
+      state.sound.seek(seconds);
+
+      state.sound.once("seek", () => {
+        dispatch("progress");
+      });
     },
   },
 });
