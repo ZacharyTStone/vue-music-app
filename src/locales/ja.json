@@ -1,15 +1,37 @@
 {
   "home": {
     "listen": "マイ・ミュージック",
-    "about": "新進気鋭のアーティストによる新曲を共有して聴く"
+    "about": "自分の新曲をアップしたり、新進気鋭のアーティストの新曲を聴く"
   },
+
+  "header": {
+    "music": "ホーム",
+    "about": "アバウト",
+    "manage": "管理",
+    "login_register": "ログイン/新規登録",
+    "logout": "ログアウト"
+  },
+
+  "login": {
+    "login": "ログイン",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "submit": "送信"
+  },
+
+  "register": {
+    "register": "新規登録",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "confirm_password": "パスワードをもう一度",
+    "name": "名前",
+    "submit": "送信"
+  },
+
   "manage": {
     "my_songs": "マイ曲"
   },
-  "register": {
-    "TOS": "利用規約",
-    "accept": "同意する"
-  },
+
   "song": {
     "comment_count": "{count} コメント | {count} コメント | {count} コメント"
   }

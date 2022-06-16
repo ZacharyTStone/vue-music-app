@@ -46,7 +46,7 @@
                   'hover:text-blue-600': tab === 'register',
                 }"
               >
-                Login
+                {{ $t("login.login") }}
               </a>
             </li>
             <li class="flex-auto text-center">
@@ -58,7 +58,7 @@
                   'hover:text-white text-white bg-blue-600': tab === 'register',
                   'hover:text-blue-600': tab === 'login',
                 }"
-                >Register</a
+                >{{ $t("register.register") }}</a
               >
             </li>
           </ul>
