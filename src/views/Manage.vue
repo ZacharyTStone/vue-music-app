@@ -26,6 +26,23 @@
               :updateUnsavedFlag="updateUnsavedFlag"
             />
           </div>
+          <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200">
+            <span class="card-title">{{ $t("manage.my_comments") }}</span>
+            <i
+              class="fa fa-compact-disc float-right text-green-400 text-2xl"
+            ></i>
+          </div>
+          <div class="p-6">
+            <!-- Composition Items -->
+            <div v-for="(comment, i) in comments" :key="i">
+              <div
+                class="text-gray-800 text-sm"
+                @click="removeComment(comment)"
+              >
+                {{ comment.content }}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -36,7 +53,7 @@
 // import store from '@/store';
 import AppUpload from "@/components/Upload.vue";
 import CompositionItem from "@/components/CompositionItem.vue";
-import { songsCollection, auth } from "@/includes/firebase";
+import { songsCollection, commentsCollection, auth } from "@/includes/firebase";
 
 export default {
   name: "manage",
@@ -47,6 +64,7 @@ export default {
   data() {
     return {
       songs: [],
+      comments: ["test"],
       unsavedFlag: false,
     };
   },
@@ -56,6 +74,12 @@ export default {
       .get();
 
     snapshot.forEach(this.addSong);
+
+    const commentsSnapshot = await commentsCollection
+      .where("uid", "==", auth.currentUser.uid)
+      .get();
+
+    commentsSnapshot.forEach(this.addComment);
   },
   methods: {
     updateSong(i, values) {
@@ -73,6 +97,55 @@ export default {
       };
 
       this.songs.push(song);
+    },
+
+    addComment(document) {
+      const comment = {
+        ...document.data(),
+        docID: document.id,
+      };
+
+      this.comments.push(comment);
+    },
+
+    async removeComment(comment) {
+      if (comment.uid === auth.currentUser.uid) {
+        // reduce number of comments on song by 1
+
+        console.log("here ok");
+
+        const songSnapshot = await songsCollection.doc(comment.sid).get();
+        const song = {
+          ...songSnapshot.data(),
+          docID: songSnapshot.id,
+        };
+
+        console.log(song);
+
+        song.comment_count -= 1;
+
+        // update song
+
+        await songsCollection.doc(song.docID).set(song);
+
+        // remove comment
+
+        commentsCollection.doc(comment.docID).delete();
+
+        // remove comment from comments array
+
+        const index = this.comments.indexOf(comment);
+
+        this.comments.splice(index, 1);
+
+        // update unsaved flag
+
+        this.updateUnsavedFlag();
+
+        console.log(this.comments);
+
+        console.log(this.songs);
+      }
     },
     updateUnsavedFlag(value) {
       this.unsavedFlag = value;

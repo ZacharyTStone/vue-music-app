@@ -159,6 +159,7 @@ export default {
         sid: this.$route.params.id,
         name: auth.currentUser.displayName,
         uid: auth.currentUser.uid,
+        commment_id: Math.random() * 1000000,
       };
 
       await commentsCollection.add(comment);

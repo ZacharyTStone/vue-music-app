@@ -29,7 +29,8 @@
     "submit": "Submit"
   },
   "manage": {
-    "my_songs": "My Songs"
+    "my_songs": "My Songs",
+    "my_comments": "My Comments"
   },
 
   "song": {

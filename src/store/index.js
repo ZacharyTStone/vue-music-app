@@ -55,8 +55,6 @@ export default createStore({
       await usersCollection.doc(userCred.user.uid).set({
         name: payload.name,
         email: payload.email,
-        age: payload.age,
-        country: payload.country,
       });
 
       await userCred.user.updateProfile({
