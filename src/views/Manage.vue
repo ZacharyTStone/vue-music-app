@@ -28,19 +28,22 @@
           </div>
           <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200">
             <span class="card-title">{{ $t("manage.my_comments") }}</span>
-            <i
-              class="fa fa-compact-disc float-right text-green-400 text-2xl"
-            ></i>
+            <i class="fa fa-comment float-right text-green-400 text-2xl"></i>
           </div>
           <div class="p-6">
             <!-- Composition Items -->
             <div v-for="(comment, i) in comments" :key="i">
-              <div
-                class="text-gray-800 text-sm"
-                @click="removeComment(comment)"
+              <span>
+                {{ comment.song_name }} : {{ comment.content }} -
+                {{ comment.datePosted }}
+              </span>
+
+              <button
+                class="ml-1 py-1 px-2 text-sm rounded text-white bg-red-600 float-right"
+                @click.prevent="removeComment(comment)"
               >
-                {{ comment.content }}
-              </div>
+                <i class="fa fa-times"></i>
+              </button>
             </div>
           </div>
         </div>
@@ -64,7 +67,7 @@ export default {
   data() {
     return {
       songs: [],
-      comments: ["test"],
+      comments: [],
       unsavedFlag: false,
     };
   },
@@ -110,21 +113,13 @@ export default {
 
     async removeComment(comment) {
       if (comment.uid === auth.currentUser.uid) {
-        // reduce number of comments on song by 1
-
-        console.log("here ok");
-
         const songSnapshot = await songsCollection.doc(comment.sid).get();
         const song = {
           ...songSnapshot.data(),
           docID: songSnapshot.id,
         };
 
-        console.log(song);
-
         song.comment_count -= 1;
-
-        // update song
 
         await songsCollection.doc(song.docID).set(song);
 
@@ -137,14 +132,6 @@ export default {
         const index = this.comments.indexOf(comment);
 
         this.comments.splice(index, 1);
-
-        // update unsaved flag
-
-        this.updateUnsavedFlag();
-
-        console.log(this.comments);
-
-        console.log(this.songs);
       }
     },
     updateUnsavedFlag(value) {
@@ -175,3 +162,5 @@ export default {
   // },
 };
 </script>
+
+<style scoped></style>

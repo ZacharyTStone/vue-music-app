@@ -36,14 +36,15 @@
               </router-link>
             </li>
             <li>
-              <a class="px-2 text-white" href="#" @click.prevent="signout"></a>
-              {{ $t("header.logout") }}
+              <a class="px-2 text-white" @click.prevent="signout" href="#">
+                {{ $t("header.logout") }}
+              </a>
             </li>
           </template>
         </ul>
         <ul class="flex flex-row mt-1 ml-auto">
           <li>
-            <a class="px-2 text-white" href="#" @click.prevent="changeLocale">
+            <a class="px-2 text-white" @click.prevent="changeLocale">
               {{ currentLocale }}
             </a>
           </li>

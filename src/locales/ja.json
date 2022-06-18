@@ -29,7 +29,8 @@
   },
 
   "manage": {
-    "my_songs": "マイ曲"
+    "my_songs": "マイ曲",
+    "my_comments": "マイコメント"
   },
 
   "song": {
