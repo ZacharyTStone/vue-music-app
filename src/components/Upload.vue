@@ -49,38 +49,40 @@ export default {
     return {
       is_dragover: false,
       uploads: [],
+      audioTypes: [
+        "audio/mp3",
+        "audio/mpeg",
+        "audio/ogg",
+        "audio/wav",
+        "audio/x-m4a",
+      ],
     };
   },
   props: ["addSong"],
   methods: {
     upload($event) {
       this.is_dragover = false;
-
       const files = $event.dataTransfer
         ? [...$event.dataTransfer.files]
         : [...$event.target.files];
-
       files.forEach((file) => {
-        if (file.type !== "audio/mpeg") {
+        if (!this.audioTypes.includes(file.type)) {
+          console.log(file.type);
+          console.log("regecting file", file.name);
           return;
         }
 
-        if (!navigator.onLine) {
-          this.uploads.push({
-            task: {},
-            current_progress: 100,
-            name: file.name,
-            variant: "bg-red-400",
-            icon: "fas fa-times",
-            text_class: "text-red-400",
-          });
-          return;
-        }
+        const firstPart = file.name.split(".")[0];
+        const lastPart = file.name.split(".")[1];
 
         const storageRef = storage.ref(); // music-c2596.appspot.com
-        const songsRef = storageRef.child(`songs/${file.name}`); // music-c2596.appspot.com/songs/example.mp3
-        const task = songsRef.put(file);
 
+        const songsRef = storageRef.child(
+          // split file name by "." and get the last part
+
+          `songs/${firstPart}.${lastPart}`
+        ); // music-c2596.appspot.com/songs/example.mp3
+        const task = songsRef.put(file);
         const uploadIndex =
           this.uploads.push({
             task,
@@ -90,7 +92,6 @@ export default {
             icon: "fas fa-spinner fa-spin",
             text_class: "",
           }) - 1;
-
         task.on(
           "state_changed",
           (snapshot) => {
@@ -113,20 +114,16 @@ export default {
               genre: "",
               comment_count: 0,
             };
-
             song.url = await task.snapshot.ref.getDownloadURL();
             const songRef = await songsCollection.add(song);
             const songSnapshot = await songRef.get();
-
             this.addSong(songSnapshot);
-
             this.uploads[uploadIndex].variant = "bg-green-400";
             this.uploads[uploadIndex].icon = "fas fa-check";
             this.uploads[uploadIndex].text_class = "text-green-400";
           }
         );
       });
-
       console.log(files);
     },
     cancelUploads() {
