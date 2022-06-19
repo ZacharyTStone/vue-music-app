@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/views/Home.vue";
-import About from "@/views/About.vue";
+import Record from "@/views/Record.vue";
 import Manage from "@/views/Manage.vue";
 import Song from "@/views/Song.vue";
 import store from "@/store";
@@ -12,9 +12,9 @@ const routes = [
     component: Home,
   },
   {
-    name: "about",
-    path: "/about",
-    component: About,
+    name: "record",
+    path: "/record",
+    component: Record,
   },
   {
     name: "manage",
@@ -39,7 +39,8 @@ const routes = [
     component: Song,
   },
   {
-    path: "/:catchAll(.*)*",
+    // catch all other routes
+    path: "/:pathMatch(.*)",
     redirect: { name: "home" },
   },
 ];

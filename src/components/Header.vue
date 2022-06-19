@@ -16,8 +16,8 @@
         <ul class="flex flex-row mt-1">
           <!-- Navigation Links -->
           <li>
-            <router-link class="px-2 text-white" :to="{ name: 'about' }">
-              {{ $t("header.about") }}
+            <router-link class="px-2 text-white" :to="{ name: 'record' }">
+              {{ $t("header.record") }}
             </router-link>
           </li>
           <li v-if="!userLoggedIn">

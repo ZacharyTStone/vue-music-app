@@ -1,13 +1,13 @@
 {
   "home": {
-    "listen": "My Music",
-    "about": "Share your music and listen to other up-and-coming artists",
-    "songs": "Songs"
+    "listen": "Nice Riff",
+    "about": "Share your musical ideas with the world",
+    "songs": "Riffs"
   },
 
   "header": {
-    "music": "Music",
-    "about": "About",
+    "music": "Riffs",
+    "record": "Record",
     "manage": "Manage",
     "login_register": "Login/Register",
     "logout": "Logout"
@@ -29,7 +29,7 @@
     "submit": "Submit"
   },
   "manage": {
-    "my_songs": "My Songs",
+    "my_songs": "My Riffs",
     "my_comments": "My Comments"
   },
 

@@ -1,12 +1,12 @@
 {
   "home": {
-    "listen": "マイ・ミュージック",
-    "about": "自分の新曲をアップしたり、新進気鋭のアーティストの新曲を聴く"
+    "listen": "ナイス・リフ",
+    "about": "音楽のアイデアを世界に聞かせましょう"
   },
 
   "header": {
-    "music": "ホーム",
-    "about": "アバウト",
+    "music": "リフ",
+    "record": "記録",
     "manage": "管理",
     "login_register": "ログイン/新規登録",
     "logout": "ログアウト"
@@ -29,7 +29,7 @@
   },
 
   "manage": {
-    "my_songs": "マイ曲",
+    "my_songs": "マイ・リフ",
     "my_comments": "マイコメント"
   },
 
