@@ -3,20 +3,15 @@
     <!-- Introduction -->
     <base-button></base-button>
 
-    <section class="mb-8 py-20 text-white text-center relative">
+    <section class="mb-8 py-10 text-white text-center relative">
       <div>
         <div
-          class="absolute inset-0 w-full h-full bg-contain introduction-bg"
+          class="absolute inset-0 w-full introduction-bg banner h-auto"
           style="background-image: url(assets/img/header.png)"
         ></div>
       </div>
-
-      <img
-        class="relative block mx-auto mt-5 -mb-20 w-auto max-w-full"
-        src="assets/img/introduction-music.png"
-      />
     </section>
-    <div class="mb-8 py-5 text-white text-center relative">
+    <div class="mb-8 py-10 text-white text-center relative">
       <div class="text-green-500 main-header-content">
         <!-- Introducting Heading -->
         <h1 class="font-bold text-5xl mb-5">
@@ -126,3 +121,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.banner {
+  height: 130px;
+}
+</style>
