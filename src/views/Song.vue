@@ -18,7 +18,6 @@
         <div class="z-50 text-left ml-8">
           <!-- Song Info -->
           <div class="text-3xl font-bold">{{ song.modified_name }}</div>
-          <div>{{ song.artist }}</div>
           <div>({{ song.genre }})</div>
         </div>
       </div>

@@ -25,8 +25,9 @@
           class="absolute left-0 right-0 text-lg text-center mx-auto player-song-info"
           v-if="currentSong.modified_name"
         >
-          <span class="song-title">{{ currentSong.modified_name }}</span>
-          - <span class="song-artist">{{ currentSong.artist }}</span>
+          <span class="song-title"
+            >{{ currentSong.modified_name }} ({{ currentSong.genre }}})</span
+          >
           uploaded by
           <span class="song-artist">{{ currentSong.display_name }}</span>
         </div>

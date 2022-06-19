@@ -1,6 +1,6 @@
 {
   "home": {
-    "listen": "Nice Riff",
+    "listen": "Nice Riff!",
     "about": "Share your musical ideas with the world",
     "songs": "Riffs"
   },
@@ -8,7 +8,7 @@
   "header": {
     "music": "Riffs",
     "record": "Record",
-    "manage": "Manage",
+    "profile": "Profile",
     "login_register": "Login/Register",
     "logout": "Logout"
   },
@@ -28,12 +28,16 @@
     "password": "Password",
     "submit": "Submit"
   },
-  "manage": {
+  "profile": {
     "my_songs": "My Riffs",
     "my_comments": "My Comments"
   },
 
   "song": {
     "comment_count": "0 comments | 1 Comment | {count} Comments"
+  },
+
+  "upload": {
+    "recordURL_title": "Need a way to record your riff? Check out this website "
   }
 }

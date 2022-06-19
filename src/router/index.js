@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/views/Home.vue";
-import Record from "@/views/Record.vue";
-import Manage from "@/views/Manage.vue";
+import Profile from "@/views/Profile.vue";
 import Song from "@/views/Song.vue";
 import store from "@/store";
 
@@ -11,28 +10,24 @@ const routes = [
     path: "/", // example.com/
     component: Home,
   },
+
   {
-    name: "record",
-    path: "/record",
-    component: Record,
-  },
-  {
-    name: "manage",
-    // alias: '/manage',
-    path: "/manage-music",
+    name: "profile",
+    // alias: '/profile',
+    path: "/profile",
     meta: {
       requiresAuth: true,
     },
-    component: Manage,
+    component: Profile,
     beforeEnter: (to, from, next) => {
-      console.log("Manage Route Guard");
+      console.log("Profile Route Guard");
       next();
     },
   },
-  {
-    path: "/manage",
-    redirect: { name: "manage" },
-  },
+  // {
+  //   path: "/profile",
+  //   redirect: { name: "profile" },
+  // },
   {
     name: "song",
     path: "/song/:id",

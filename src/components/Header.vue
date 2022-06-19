@@ -15,11 +15,7 @@
         <!-- Primary Navigation -->
         <ul class="flex flex-row mt-1">
           <!-- Navigation Links -->
-          <li>
-            <router-link class="px-2 text-white" :to="{ name: 'record' }">
-              {{ $t("header.record") }}
-            </router-link>
-          </li>
+
           <li v-if="!userLoggedIn">
             <a
               class="px-2 text-white"
@@ -31,8 +27,8 @@
           </li>
           <template v-else>
             <li>
-              <router-link class="px-2 text-white" :to="{ name: 'manage' }">
-                {{ $t("header.manage") }}
+              <router-link class="px-2 text-white" :to="{ name: 'profile' }">
+                {{ $t("header.profile") }}
               </router-link>
             </li>
             <li>
@@ -44,7 +40,7 @@
         </ul>
         <ul class="flex flex-row mt-1 ml-auto">
           <li>
-            <a class="px-2 text-white" @click.prevent="changeLocale">
+            <a class="px-2 text-white" @click.prevent="changeLocale" href="#">
               {{ currentLocale }}
             </a>
           </li>

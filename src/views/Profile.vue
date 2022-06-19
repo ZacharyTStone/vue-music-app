@@ -9,7 +9,7 @@
           class="bg-white rounded border border-gray-200 relative flex flex-col"
         >
           <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200">
-            <span class="card-title">{{ $t("manage.my_songs") }}</span>
+            <span class="card-title">{{ $t("profile.my_songs") }}</span>
             <i
               class="fa fa-compact-disc float-right text-green-400 text-2xl"
             ></i>
@@ -27,7 +27,7 @@
             />
           </div>
           <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200">
-            <span class="card-title">{{ $t("manage.my_comments") }}</span>
+            <span class="card-title">{{ $t("profile.my_comments") }}</span>
             <i class="fa fa-comment float-right text-green-400 text-2xl"></i>
           </div>
           <div class="p-6">
@@ -59,7 +59,7 @@ import CompositionItem from "@/components/CompositionItem.vue";
 import { songsCollection, commentsCollection, auth } from "@/includes/firebase";
 
 export default {
-  name: "manage",
+  name: "profile",
   components: {
     AppUpload,
     CompositionItem,
@@ -88,7 +88,6 @@ export default {
     updateSong(i, values) {
       this.songs[i].modified_name = values.modified_name;
       this.songs[i].genre = values.genre;
-      this.songs[i].artist = values.artist;
     },
     removeSong(i) {
       this.songs.splice(i, 1);

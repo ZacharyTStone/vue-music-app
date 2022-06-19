@@ -36,6 +36,18 @@
           ></div>
         </div>
       </div>
+      <p>
+        <a
+          href="https://online-voice-recorder.com/"
+          class="text-green-800 text-sm"
+          target="_blank"
+        >
+          <i
+            class="fa-solid fa-link fas float-right text-green-400 text-2xl"
+          ></i>
+          {{ $t("upload.recordURL_title") }}
+        </a>
+      </p>
     </div>
   </div>
 </template>

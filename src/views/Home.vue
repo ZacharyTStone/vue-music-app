@@ -2,21 +2,13 @@
   <main>
     <!-- Introduction -->
     <base-button></base-button>
+
     <section class="mb-8 py-20 text-white text-center relative">
-      <div
-        class="absolute inset-0 w-full h-full bg-contain introduction-bg"
-        style="background-image: url(assets/img/header.png)"
-      ></div>
-      <div class="container mx-auto">
-        <div class="text-white main-header-content">
-          <!-- Introducting Heading -->
-          <h1 class="font-bold text-5xl mb-5">
-            {{ $t("home.listen") }}
-          </h1>
-          <p class="w-full md:w-8/12 mx-auto">
-            {{ $t("home.about") }}
-          </p>
-        </div>
+      <div>
+        <div
+          class="absolute inset-0 w-full h-full bg-contain introduction-bg"
+          style="background-image: url(assets/img/header.png)"
+        ></div>
       </div>
 
       <img
@@ -24,6 +16,17 @@
         src="assets/img/introduction-music.png"
       />
     </section>
+    <div class="mb-8 py-5 text-white text-center relative">
+      <div class="text-green-500 main-header-content">
+        <!-- Introducting Heading -->
+        <h1 class="font-bold text-5xl mb-5">
+          {{ $t("home.listen") }}
+        </h1>
+        <p class="w-full md:w-8/12 mx-auto">
+          {{ $t("home.about") }}
+        </p>
+      </div>
+    </div>
 
     <!-- Main Content -->
     <section class="container mx-auto">

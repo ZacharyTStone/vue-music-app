@@ -1,13 +1,13 @@
 {
   "home": {
-    "listen": "ナイス・リフ",
+    "listen": "ナイス・リフ!",
     "about": "音楽のアイデアを世界に聞かせましょう"
   },
 
   "header": {
     "music": "リフ",
     "record": "記録",
-    "manage": "管理",
+    "profile": "プロフィール",
     "login_register": "ログイン/新規登録",
     "logout": "ログアウト"
   },
@@ -28,12 +28,15 @@
     "submit": "送信"
   },
 
-  "manage": {
+  "profile": {
     "my_songs": "マイ・リフ",
     "my_comments": "マイコメント"
   },
 
   "song": {
     "comment_count": "{count} コメント | {count} コメント | {count} コメント"
+  },
+  "upload": {
+    "recordURL_title": "記録できないですか？　このウェブサイトを使ってみてください。"
   }
 }
