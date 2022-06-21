@@ -125,6 +125,7 @@ export default {
               modified_name: task.snapshot.ref.name,
               genre: "",
               comment_count: 0,
+              instrument: "",
             };
             song.url = await task.snapshot.ref.getDownloadURL();
             const songRef = await songsCollection.add(song);

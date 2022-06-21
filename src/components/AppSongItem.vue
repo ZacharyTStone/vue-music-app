@@ -11,6 +11,7 @@
       <span class="text-gray-500 text-sm">
         uploaded by {{ song.display_name }}</span
       >
+      <span class="text-gray-500 text-sm"> on the {{ song.instrument }}</span>
     </div>
 
     <div class="text-gray-600 text-lg">

@@ -29,7 +29,7 @@
         @submit="edit"
       >
         <div class="mb-3">
-          <label class="inline-block mb-2">Song Title</label>
+          <label class="inline-block mb-2">Description</label>
           <vee-field
             type="text"
             name="modified_name"
@@ -38,6 +38,17 @@
             @input="updateUnsavedFlag(true)"
           />
           <ErrorMessage class="text-red-600" name="modified_name" />
+        </div>
+        <div class="mb-3">
+          <label class="inline-block mb-2">Instrument</label>
+          <vee-field
+            type="text"
+            name="instrument"
+            class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
+            placeholder="Enter instrument"
+            @input="updateUnsavedFlag(true)"
+          />
+          <ErrorMessage class="text-red-600" name="instrument" />
         </div>
 
         <div class="mb-3">
@@ -103,6 +114,7 @@ export default {
       schema: {
         modified_name: "required",
         genre: "alpha_spaces",
+        instrument: "alpha_spaces",
       },
       in_submission: false,
       show_alert: false,
