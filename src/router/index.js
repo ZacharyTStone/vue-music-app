@@ -24,10 +24,6 @@ const routes = [
       next();
     },
   },
-  // {
-  //   path: "/profile",
-  //   redirect: { name: "profile" },
-  // },
   {
     name: "song",
     path: "/song/:id",
