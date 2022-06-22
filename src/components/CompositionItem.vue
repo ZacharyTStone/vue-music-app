@@ -68,6 +68,26 @@
           />
           <ErrorMessage class="text-red-600" name="genre" />
         </div>
+        <div class="mb-3">
+          <label class="inline-block mb-2">{{
+            $t("composition-item.type")
+          }}</label>
+
+          <vee-field
+            as="select"
+            name="type"
+            class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
+            placeholder="Enter Type"
+            @input="updateUnsavedFlag(true)"
+            default="idea"
+          >
+            <option value="song">{{ $t("composition-item.option1") }}</option>
+            <option value="idea">{{ $t("composition-item.option2") }}</option>
+            <option value="cover">{{ $t("composition-item.option3") }}</option>
+          </vee-field>
+
+          <ErrorMessage class="text-red-600" name="type" />
+        </div>
         <button
           type="submit"
           class="py-1.5 px-3 rounded text-white bg-green-600"
@@ -121,6 +141,7 @@ export default {
         modified_name: "required",
         genre: "alpha_spaces",
         instrument: "alpha_spaces",
+        type: "required",
       },
       in_submission: false,
       show_alert: false,

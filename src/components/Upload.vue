@@ -123,9 +123,10 @@ export default {
               display_name: auth.currentUser.displayName,
               original_name: task.snapshot.ref.name,
               modified_name: task.snapshot.ref.name,
-              genre: "",
+              genre: "N/A",
               comment_count: 0,
-              instrument: "",
+              instrument: "N/A",
+              type: "idea",
             };
             song.url = await task.snapshot.ref.getDownloadURL();
             const songRef = await songsCollection.add(song);

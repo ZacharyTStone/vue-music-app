@@ -20,7 +20,19 @@
           <div class="text-3xl font-bold">
             {{ song.modified_name }} - {{ song.display_name }}
           </div>
-          <div>{{ song.genre }} style played on the {{ song.instrument }}</div>
+          <div>
+            {{ song.genre }} style played on the {{ song.instrument }}
+            <i
+              v-if="this.song.type == 'song'"
+              class="fas fa-music text-green-400 text-1xl"
+            ></i>
+            <i
+              v-else-if="this.song.type == 'cover'"
+              class="fas fa-compact-disc text-green-400 text-1xl"
+            >
+            </i>
+            <i v-else class="fas fa-puzzle-piece text-green-400 text-1xl"></i>
+          </div>
         </div>
       </div>
     </section>

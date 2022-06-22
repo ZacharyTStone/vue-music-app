@@ -50,6 +50,10 @@
   "composition-item": {
     "description": "Description",
     "instrument": "Instrument",
-    "genre": "Genre"
+    "genre": "Genre",
+    "type": "Type",
+    "option1": "original song",
+    "option2": "musical idea ",
+    "option3": "cover"
   }
 }

@@ -48,6 +48,10 @@
   "composition-item": {
     "description": "説明",
     "instrument": "楽器",
-    "genre": "ジャンル"
+    "genre": "ジャンル",
+    "type": "タイプ",
+    "option1": "自分が作成した曲",
+    "option2": "自分が作成した音楽のアイデァ（リフ）",
+    "option3": "誰か作成した曲のカバー"
   }
 }

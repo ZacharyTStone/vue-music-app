@@ -2,6 +2,11 @@ a {
   transition: all 0.15s ease;
 }
 
+/* all text */
+body {
+  font-size: 18px;
+}
+
 /* text-yellow-500 */
 a:hover {
   color: #f59e0b;

@@ -89,6 +89,7 @@ export default {
       this.songs[i].modified_name = values.modified_name;
       this.songs[i].genre = values.genre;
       this.songs[i].instrument = values.instrument;
+      this.songs[i].type = values.type;
     },
     removeSong(i) {
       this.songs.splice(i, 1);
