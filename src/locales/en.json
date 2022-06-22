@@ -38,6 +38,18 @@
   },
 
   "upload": {
-    "recordURL_title": "Need a way to record your riff? Check out this website "
+    "recordURL_title": "Need a way to record your riff? Check out this website ",
+    "title": "Upload"
+  },
+
+  "player": {
+    "by": " uploaded by ",
+    "on": " on the  "
+  },
+
+  "composition-item": {
+    "description": "Description",
+    "instrument": "Instrument",
+    "genre": "Genre"
   }
 }

@@ -29,7 +29,9 @@
         @submit="edit"
       >
         <div class="mb-3">
-          <label class="inline-block mb-2">Description</label>
+          <label class="inline-block mb-2">{{
+            $t("composition-item.description")
+          }}</label>
           <vee-field
             type="text"
             name="modified_name"
@@ -40,7 +42,9 @@
           <ErrorMessage class="text-red-600" name="modified_name" />
         </div>
         <div class="mb-3">
-          <label class="inline-block mb-2">Instrument</label>
+          <label class="inline-block mb-2">{{
+            $t("composition-item.instrument")
+          }}</label>
           <vee-field
             type="text"
             name="instrument"
@@ -52,7 +56,9 @@
         </div>
 
         <div class="mb-3">
-          <label class="inline-block mb-2">Genre</label>
+          <label class="inline-block mb-2">{{
+            $t("composition-item.genre")
+          }}</label>
           <vee-field
             type="text"
             name="genre"

@@ -28,7 +28,7 @@
           <span class="song-title"
             >{{ currentSong.modified_name }} ({{ currentSong.genre }})</span
           >
-          uploaded by
+          {{ $t("player.by") }}
           <span class="song-artist">{{ currentSong.display_name }}</span>
         </div>
         <span

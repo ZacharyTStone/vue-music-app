@@ -37,6 +37,17 @@
     "comment_count": "{count} コメント | {count} コメント | {count} コメント"
   },
   "upload": {
-    "recordURL_title": "記録できないですか？　このウェブサイトを使ってみてください。"
+    "recordURL_title": "記録できないですか？　このウェブサイトを使ってみてください。",
+    "title": "アップロード"
+  },
+  "player": {
+    "by": "アップした人は",
+    "on": "楽器は"
+  },
+
+  "composition-item": {
+    "description": "説明",
+    "instrument": "楽器",
+    "genre": "ジャンル"
   }
 }
