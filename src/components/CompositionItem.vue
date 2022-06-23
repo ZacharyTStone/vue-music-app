@@ -81,9 +81,16 @@
             @input="updateUnsavedFlag(true)"
             default="idea"
           >
-            <option value="song">{{ $t("composition-item.option1") }}</option>
-            <option value="idea">{{ $t("composition-item.option2") }}</option>
-            <option value="cover">{{ $t("composition-item.option3") }}</option>
+            <option value="idea">
+              {{ $t("composition-item.option2") }}
+            </option>
+            <option value="song">
+              {{ $t("composition-item.option1") }}
+            </option>
+            <label></label>
+            <option value="cover">
+              {{ $t("composition-item.option3") }}
+            </option>
           </vee-field>
 
           <ErrorMessage class="text-red-600" name="type" />
@@ -173,14 +180,16 @@ export default {
       this.alert_message = "Success!";
     },
     async deleteSong() {
-      const storageRef = storage.ref();
-      const songRef = storageRef.child(`songs/${this.song.original_name}`);
+      if (confirm("do you want to delete this song?")) {
+        const storageRef = storage.ref();
+        const songRef = storageRef.child(`songs/${this.song.original_name}`);
 
-      await songRef.delete();
+        await songRef.delete();
 
-      await songsCollection.doc(this.song.docID).delete();
+        await songsCollection.doc(this.song.docID).delete();
 
-      this.removeSong(this.index);
+        this.removeSong(this.index);
+      }
     },
   },
 };
