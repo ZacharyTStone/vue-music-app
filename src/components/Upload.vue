@@ -67,6 +67,7 @@ export default {
         "audio/ogg",
         "audio/wav",
         "audio/x-m4a",
+        "video/mp4",
       ],
     };
   },

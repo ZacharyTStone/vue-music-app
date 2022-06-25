@@ -146,8 +146,8 @@ export default {
       showForm: false,
       schema: {
         modified_name: "required",
-        genre: "alpha_spaces",
-        instrument: "alpha_spaces",
+        genre: "required",
+        instrument: "required",
         type: "required",
       },
       in_submission: false,
