@@ -113,26 +113,28 @@ export default {
     },
 
     async removeComment(comment) {
-      if (comment.uid === auth.currentUser.uid) {
-        const songSnapshot = await songsCollection.doc(comment.sid).get();
-        const song = {
-          ...songSnapshot.data(),
-          docID: songSnapshot.id,
-        };
+      if (confirm("do you want to delete this comment?")) {
+        if (comment.uid === auth.currentUser.uid) {
+          const songSnapshot = await songsCollection.doc(comment.sid).get();
+          const song = {
+            ...songSnapshot.data(),
+            docID: songSnapshot.id,
+          };
 
-        song.comment_count -= 1;
+          song.comment_count -= 1;
 
-        await songsCollection.doc(song.docID).set(song);
+          await songsCollection.doc(song.docID).set(song);
 
-        // remove comment
+          // remove comment
 
-        commentsCollection.doc(comment.docID).delete();
+          commentsCollection.doc(comment.docID).delete();
 
-        // remove comment from comments array
+          // remove comment from comments array
 
-        const index = this.comments.indexOf(comment);
+          const index = this.comments.indexOf(comment);
 
-        this.comments.splice(index, 1);
+          this.comments.splice(index, 1);
+        }
       }
     },
     updateUnsavedFlag(value) {
