@@ -119,6 +119,7 @@ export default createStore({
         });
       }
     },
+
     updateSeek({ state, dispatch }, payload) {
       if (!state.sound.playing) {
         return;

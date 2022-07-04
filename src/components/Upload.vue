@@ -128,6 +128,7 @@ export default {
               comment_count: 0,
               instrument: "N/A",
               type: "idea",
+              likes: [],
             };
             song.url = await task.snapshot.ref.getDownloadURL();
             const songRef = await songsCollection.add(song);

@@ -33,6 +33,14 @@
             </i>
             <i v-else class="fas fa-puzzle-piece text-green-400 text-1xl"></i>
           </div>
+          <span class="likes" @click="handleLike">
+            <i
+              v-if="this.liked"
+              class="fa fa-thumbs-up text-green-600 big-icon"
+            ></i>
+            <i v-else class="fa fa-thumbs-up text-gray-600 big-icon"></i>
+            {{ this.song.likes.length }}
+          </span>
         </div>
       </div>
     </section>
@@ -128,6 +136,7 @@ export default {
       comment_alert_message: "Please wait! Your comment is being submitted",
       comments: [],
       sort: "1",
+      liked: false,
     };
   },
   computed: {
@@ -156,9 +165,48 @@ export default {
 
     this.song = docSnapshot.data();
     this.getComments();
+    this.checkIfLiked();
   },
+
   methods: {
     ...mapActions(["newSong"]),
+    async handleLike() {
+      if (!this.userLoggedIn) {
+        this.comment_show_alert = true;
+        this.comment_alert_variant = "bg-red-500";
+        this.comment_alert_message =
+          "You must be logged in to like a song. Please login or register.";
+        return;
+      }
+
+      if (this.liked) {
+        let newLikesArray = await this.song.likes.filter((like) => {
+          console.log(like, auth.currentUser.uid);
+          return like !== auth.currentUser.uid;
+        });
+
+        console.log(this.song.likes);
+        console.log(newLikesArray);
+        console.log(auth.currentUser.uid);
+
+        await songsCollection.doc(this.song.docID).update({
+          likes: newLikesArray,
+        });
+        this.song.likes = newLikesArray;
+
+        this.checkIfLiked();
+      } else {
+        let newLikesArray = [...this.song.likes, auth.currentUser.uid];
+
+        await songsCollection.doc(this.song.docID).update({
+          likes: newLikesArray,
+        });
+        this.song.likes = newLikesArray;
+
+        this.checkIfLiked();
+      }
+    },
+
     async addComment(values, { resetForm }) {
       this.comment_in_submission = true;
       this.comment_show_alert = true;
@@ -191,6 +239,28 @@ export default {
 
       resetForm();
     },
+
+    async checkIfLiked() {
+      console.log("Checking if liked");
+      console.log();
+      const docSnapshot = await songsCollection
+        .doc(this.$route.params.id)
+        .get();
+
+      if (!docSnapshot.exists) {
+        this.$router.push({ name: "home" });
+        return;
+      }
+
+      const { likes } = docSnapshot.data();
+
+      if (likes.includes(auth.currentUser.uid)) {
+        this.liked = true;
+      } else {
+        this.liked = false;
+      }
+    },
+
     async getComments() {
       const snapshots = await commentsCollection
         .where("sid", "==", this.$route.params.id)
@@ -221,3 +291,10 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.big-icon {
+  font-size: 2rem;
+  margin: 10px 10px;
+}
+</style>
