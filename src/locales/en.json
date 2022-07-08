@@ -1,12 +1,12 @@
 {
   "home": {
-    "listen": "Riffs!",
-    "about": "Share your musical ideas with the world",
-    "songs": "Riffs"
+    "listen": "Wow On-Ga-Ku!",
+    "about": "A place to share your new songs, covers, and musical ideas with the world.",
+    "songs": "Songs"
   },
 
   "header": {
-    "music": "Riffs",
+    "music": "Wow Ongaku",
     "record": "Record",
     "profile": "Profile",
     "login_register": "Login/Register",
@@ -29,7 +29,7 @@
     "submit": "Submit"
   },
   "profile": {
-    "my_songs": "My Riffs",
+    "my_songs": "My Music",
     "my_comments": "My Comments"
   },
 
@@ -38,7 +38,7 @@
   },
 
   "upload": {
-    "recordURL_title": "Need a way to record your riff? Check out this website ",
+    "recordURL_title": "Need a way to record your music? Check out this website ",
     "title": "Upload"
   },
 
