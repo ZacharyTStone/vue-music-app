@@ -28,16 +28,29 @@
       <div
         class="bg-white rounded border border-gray-200 relative flex flex-col"
       >
+        <SongTypePanel />
         <div
           class="px-6 pt-6 pb-5 font-bold border-b border-gray-200"
-          v-icon-secondary="{ icon: 'headphones-alt', right: true }"
+          v-icon-secondary="{
+            icon: 'headphones-alt',
+            right: true,
+            active: true,
+          }"
         >
           <span class="card-title">{{ $t("home.songs") }}</span>
           <!-- Icon -->
         </div>
         <!-- Playlist -->
+        <!-- only create the song time if the song's type is the same as the current states current song type-->
         <ol id="playlist">
-          <app-song-item v-for="song in songs" :key="song.docID" :song="song" />
+          <app-song-item
+            v-for="song in songs"
+            :song="song"
+            :key="song.id"
+            v-show="
+              song.type == this.currentSongType || this.currentSongType == 'all'
+            "
+          />
         </ol>
         <!-- .. end Playlist -->
       </div>
@@ -46,18 +59,22 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import { songsCollection } from "@/includes/firebase";
 import AppSongItem from "@/components/AppSongItem.vue";
 import IconSecondary from "@/directives/icon-secondary";
+import SongTypePanel from "../components/SongTypePanel.vue";
 
 export default {
   name: "Home",
   components: {
     AppSongItem,
+    SongTypePanel,
   },
   directives: {
     "icon-secondary": IconSecondary,
   },
+
   data() {
     return {
       songs: [],
@@ -65,6 +82,13 @@ export default {
       pendingRequest: false,
     };
   },
+
+  computed: {
+    ...mapState({
+      currentSongType: (state) => state.currentSongType,
+    }),
+  },
+
   async created() {
     this.getSongs();
 

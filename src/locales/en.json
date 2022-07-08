@@ -4,6 +4,12 @@
     "about": "A place to share your new songs, covers, and musical ideas with the world.",
     "songs": "Songs"
   },
+  "SongTypePanel": {
+    "all": "All",
+    "cover": "Covers",
+    "song": "Original Songs",
+    "idea": "Musical Ideas"
+  },
 
   "header": {
     "music": "Wow Ongaku",

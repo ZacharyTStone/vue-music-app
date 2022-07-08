@@ -12,6 +12,7 @@ export default createStore({
     seek: "00:00",
     duration: "00:00",
     playerProgress: "0%",
+    currentSongType: "all",
   },
   mutations: {
     toggleAuthModal: (state) => {
@@ -34,6 +35,10 @@ export default createStore({
         (state.sound.seek() / state.sound.duration()) * 100
       }%`;
     },
+
+    changeCurrentSongType(state, payload) {
+      state.currentSongType = payload;
+    },
   },
   getters: {
     // authModalShow: (state) => state.authModalShow,
@@ -44,6 +49,8 @@ export default createStore({
 
       return false;
     },
+
+    currentSongType: (state) => state.currentSongType,
   },
   actions: {
     async register({ commit }, payload) {
