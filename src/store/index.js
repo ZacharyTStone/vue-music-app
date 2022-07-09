@@ -23,6 +23,10 @@ export default createStore({
     },
     newSong(state, payload) {
       state.currentSong = payload;
+      if (!state.sound) {
+        alert("Something went wrong. Please try again later");
+        return;
+      }
       state.sound = new Howl({
         src: [payload.url],
         html5: true,

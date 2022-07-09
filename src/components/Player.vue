@@ -71,4 +71,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+@media (max-width: 1000px) {
+  .player-song-info {
+    display: none;
+  }
+}
+</style>

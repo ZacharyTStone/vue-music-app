@@ -10,7 +10,7 @@
         <!-- Play/Pause Button -->
         <button
           type="button"
-          class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none"
+          class="z-30 h-20 w-20 text-3xl bg-white text-black rounded-full focus:outline-none play-button"
           @click.prevent="newSong(song)"
         >
           <i class="fas fa-play"></i>
@@ -152,7 +152,12 @@ export default {
     },
   },
   async created() {
-    const docSnapshot = await songsCollection.doc(this.$route.params.id).get();
+    const docSnapshot = await songsCollection
+      .doc(this.$route.params.id)
+      .get()
+      .catch((error) => {
+        alert(error.message);
+      });
 
     if (!docSnapshot.exists) {
       this.$router.push({ name: "home" });
