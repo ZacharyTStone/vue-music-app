@@ -20,7 +20,7 @@
           <div class="text-3xl font-bold">
             {{ song.modified_name }} - {{ song.display_name }}
           </div>
-          <div>
+          <div iv>
             {{ song.genre }} style played on the {{ song.instrument }}
             <i
               v-if="this.song.type == 'song'"
@@ -89,6 +89,7 @@
             </button>
           </vee-form>
           <!-- Comment Sorting -->
+
           <select
             v-model="sort"
             class="block mt-4 py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
@@ -96,6 +97,17 @@
             <option value="1">Latest</option>
             <option value="2">Oldest</option>
           </select>
+          <span class="">
+            <a
+              className="twitter-share-button twitter float-right"
+              v-bind:href="'' + this.twitterURL"
+              data-size="large"
+              target="_blank"
+            >
+              {{ $tc("song.twitter") }}
+              <img :src="mySVG" class="float-right twitter-svg" />
+            </a>
+          </span>
         </div>
       </div>
     </section>
@@ -124,6 +136,7 @@ import { mapState, mapActions } from "vuex";
 
 export default {
   name: "Song",
+
   data() {
     return {
       song: {},
@@ -137,6 +150,8 @@ export default {
       comments: [],
       sort: "1",
       liked: false,
+      twitterURL: "",
+      mySVG: require("../assets/twitter-brands.svg"),
     };
   },
   computed: {
@@ -159,10 +174,20 @@ export default {
         alert(error.message);
       });
 
+    this.twitterURL = `https://twitter.com/intent/tweet?text=Check out ${
+      docSnapshot.data().modified_name
+    } by ${
+      docSnapshot.data().display_name
+    } Click the link to listen on Wow On-Ga-Ku &url=https://wowongaku.netlify.app/song/${
+      docSnapshot.id
+    }`;
+
     if (!docSnapshot.exists) {
       this.$router.push({ name: "home" });
       return;
     }
+
+    // set twitter url
 
     const { sort } = this.$route.query;
 
@@ -301,5 +326,17 @@ export default {
 .big-icon {
   font-size: 2rem;
   margin: 10px 10px;
+}
+
+.twitter-svg {
+  width: 2rem;
+  height: 2rem;
+  margin-left: 10px;
+}
+.twitter-share-button {
+  position: absolute;
+  bottom: 25px;
+  right: 20px;
+  color: #1da1f2;
 }
 </style>

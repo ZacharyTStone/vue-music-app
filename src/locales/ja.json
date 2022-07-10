@@ -1,13 +1,13 @@
 {
   "home": {
     "listen": "ワァオ・音楽!",
-    "about": "新しい曲、カバー、音楽のアイデアを世界と共有するための場所。",
+    "about": "新曲、カバー、音楽のアイデアを世界と共有するためのサイト。",
     "songs": "チューンズ"
   },
   "SongTypePanel": {
     "all": "全部",
     "cover": "曲のカバー",
-    "song": "新しい曲",
+    "song": "新曲",
     "idea": "アイデア"
   },
 
@@ -41,7 +41,8 @@
   },
 
   "song": {
-    "comment_count": "{count} コメント | {count} コメント | {count} コメント"
+    "comment_count": "{count} コメント | {count} コメント | {count} コメント",
+    "twitter": "ツイッターでシェアしましょう"
   },
   "upload": {
     "recordURL_title": "記録できないですか？　このウェブサイトを使ってみてください。",

@@ -40,7 +40,8 @@
   },
 
   "song": {
-    "comment_count": "0 comments | 1 Comment | {count} Comments"
+    "comment_count": "0 comments | 1 Comment | {count} Comments",
+    "twitter": "Share this song on Twitter"
   },
 
   "upload": {
