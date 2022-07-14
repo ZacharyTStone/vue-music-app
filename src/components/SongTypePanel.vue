@@ -68,4 +68,8 @@ export default {
   color: #fff;
   background-color: #007bff;
 }
+
+span {
+  cursor: pointer;
+}
 </style>
