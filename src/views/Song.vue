@@ -178,7 +178,7 @@ export default {
       docSnapshot.data().modified_name
     } by ${
       docSnapshot.data().display_name
-    } Click the link to listen on Wow On-Ga-Ku &url=https://wowongaku.netlify.app/song/${
+    } Click the link to listen on Riffs &url=https://wowongaku.netlify.app/song/${
       docSnapshot.id
     }`;
 
