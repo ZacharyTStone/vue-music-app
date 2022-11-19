@@ -14,13 +14,14 @@ let app;
 
 auth.onAuthStateChanged(() => {
   if (!app) {
-    app = createApp(App).use(i18n);
+    app = createApp(App)
     app.use(store);
     app.use(router);
     app.use(VeeValidatePlugin);
 
     app.directive("Icon", Icon);
 
-    app.mount("#app");
+    app.mount("#app")
+    app.use(i18n);
   }
 });
