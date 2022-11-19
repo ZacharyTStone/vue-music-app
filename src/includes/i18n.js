@@ -46,6 +46,6 @@ function loadLocaleMessages() {
 
 export default createI18n({
   locale: checkLanguage(language),
-  fallbackLocale:  checkLanguage(language),
+  fallbackLocale:  "en",
   messages: loadLocaleMessages(),
 });
