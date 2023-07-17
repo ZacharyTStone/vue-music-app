@@ -116,7 +116,7 @@
 </template>
 
 <script>
-import { songsCollection, storage } from "@/includes/firebase";
+import { songsCollection, storage } from "@/utils/firebase";
 
 export default {
   name: "CompositionItem",

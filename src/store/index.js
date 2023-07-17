@@ -1,7 +1,7 @@
 import { createStore } from "vuex";
-import { auth, usersCollection } from "@/includes/firebase";
+import { auth, usersCollection } from "@/utils/firebase";
 import { Howl } from "howler";
-import helper from "@/includes/helper";
+import helper from "@/utils/misc";
 
 export default createStore({
   state: {

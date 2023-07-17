@@ -32,7 +32,10 @@
     "login": "Login",
     "email": "Email",
     "password": "Password",
-    "submit": "Submit"
+    "submit": "Submit",
+    "pleaseWait": "Please wait...",
+    "invalidDetails": "Invalid email or password",
+    "successLoggedIn": "You have successfully logged in"
   },
   "profile": {
     "my_songs": "My Music",
@@ -54,6 +57,10 @@
     "on": " on the  "
   },
 
+  "locales": {
+    "english": "English",
+    "japanese": "日本語"
+  },
   "composition-item": {
     "description": "Description",
     "instrument": "Instrument",

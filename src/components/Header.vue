@@ -15,7 +15,6 @@
         <!-- Primary Navigation -->
         <ul class="flex flex-row mt-1">
           <!-- Navigation Links -->
-
           <li v-if="!userLoggedIn">
             <a
               class="px-2 text-white"
@@ -58,7 +57,9 @@ export default {
   computed: {
     ...mapState(["userLoggedIn"]),
     currentLocale() {
-      return this.$i18n.locale === "en" ? "日本語" : "English";
+      return this.$i18n.locale === "en"
+        ? this.$t("locales.japanese")
+        : this.$t("locales.english");
     },
   },
   methods: {
@@ -72,14 +73,10 @@ export default {
         route: this.$route,
       });
 
-      // console.log(this.$route);
       if (this.$route.meta.requiresAuth) {
         this.$router.push({ name: "home" });
       }
     },
-    // toggleAuthModal() {
-    //   this.$store.commit('toggleAuthModal');
-    // },
   },
 };
 </script>

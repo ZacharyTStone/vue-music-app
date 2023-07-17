@@ -2,12 +2,12 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-import VeeValidatePlugin from "./includes/validation";
-import { auth } from "./includes/firebase";
+import VeeValidatePlugin from "./utils/validation";
+import { auth } from "./utils/firebase";
 import Icon from "./directives/Icon";
 import "./assets/tailwind.css";
 import "./assets/main.css";
-import i18n from "./includes/i18n";
+import i18n from "./utils/i18n";
 import "./registerServiceWorker";
 
 let app;

@@ -131,7 +131,7 @@
 </template>
 
 <script>
-import { songsCollection, auth, commentsCollection } from "@/includes/firebase";
+import { songsCollection, auth, commentsCollection } from "@/utils/firebase";
 import { mapState, mapActions } from "vuex";
 
 export default {

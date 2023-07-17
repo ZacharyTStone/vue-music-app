@@ -1,10 +1,10 @@
 <template>
   <div
     class="text-white text-center font-bold p-4 mb-4"
-    v-if="login_show_alert"
-    :class="login_alert_variant"
+    v-if="showAlert"
+    :class="alertVariant"
   >
-    {{ login_alert_msg }}
+    {{ alertMessage }}
   </div>
   <vee-form :validation-schema="loginSchema" @submit="login">
     <!-- Email -->
@@ -31,7 +31,7 @@
     </div>
     <button
       type="submit"
-      :disabled="login_in_submission"
+      :disabled="inSubmission"
       class="block w-full bg-purple-600 text-white py-1.5 px-3 rounded transition hover:bg-purple-700"
     >
       {{ $t("login.submit") }}
@@ -48,30 +48,30 @@ export default {
         email: "required|email",
         password: "required|min:3|max:32",
       },
-      login_in_submission: false,
-      login_show_alert: false,
-      login_alert_variant: "bg-blue-500",
-      login_alert_msg: "Please wait! We are logging you in.",
+      inSubmission: false,
+      showAlert: false,
+      alertVariant: "bg-blue-500",
+      alertMessage: this.$t("login.pleaseWait"),
     };
   },
   methods: {
     async login(values) {
-      this.login_in_submission = true;
-      this.login_show_alert = true;
-      this.login_alert_variant = "bg-blue-500";
-      this.login_alert_msg = "Please wait! We are logging you in.";
+      this.inSubmission = true;
+      this.showAlert = true;
+      this.alertVariant = "bg-blue-500";
+      this.alertMessage = this.$t("login.pleaseWait");
 
       try {
         await this.$store.dispatch("login", values);
       } catch (error) {
-        this.login_in_submission = false;
-        this.login_alert_variant = "bg-red-500";
-        this.login_alert_msg = "Invalid login details.";
+        this.inSubmission = false;
+        this.alertVariant = "bg-red-500";
+        this.alertMessage = this.$t("login.invalidDetails");
         return;
       }
 
-      this.login_alert_variant = "bg-green-500";
-      this.login_alert_msg = "Success! You are now logged in.";
+      this.alertVariant = "bg-green-500";
+      this.alertMessage = this.$t("login.successLoggedIn");
       //refresh the page
       window.location.reload();
     },

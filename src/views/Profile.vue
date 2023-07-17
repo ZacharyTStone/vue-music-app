@@ -56,7 +56,7 @@
 // import store from '@/store';
 import AppUpload from "@/components/Upload.vue";
 import CompositionItem from "@/components/CompositionItem.vue";
-import { songsCollection, commentsCollection, auth } from "@/includes/firebase";
+import { songsCollection, commentsCollection, auth } from "@/utils/firebase";
 
 export default {
   name: "profile",

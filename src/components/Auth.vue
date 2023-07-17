@@ -40,7 +40,7 @@
               <a
                 class="block rounded py-3 px-4 transition"
                 href="#"
-                @click.prevent="tab = 'login'"
+                @click.prevent="setTab('login')"
                 :class="{
                   'hover:text-white text-white bg-blue-600': tab === 'login',
                   'hover:text-blue-600': tab === 'register',
@@ -53,7 +53,7 @@
               <a
                 class="block rounded py-3 px-4 transition"
                 href="#"
-                @click.prevent="tab = 'register'"
+                @click.prevent="setTab('register')"
                 :class="{
                   'hover:text-white text-white bg-blue-600': tab === 'register',
                   'hover:text-blue-600': tab === 'login',
@@ -63,8 +63,8 @@
             </li>
           </ul>
 
-          <app-login-form v-if="tab === 'login'" />
-          <app-register-form v-else />
+          <!-- Dynamic Form Components -->
+          <component :is="currentFormComponent" />
         </div>
       </div>
     </div>
@@ -73,14 +73,15 @@
 
 <script>
 import { mapMutations, mapState } from "vuex";
-import AppLoginForm from "./LoginForm.vue";
-import AppRegisterForm from "./RegisterForm.vue";
+
+import LoginForm from "./LoginForm.vue";
+import RegisterForm from "./RegisterForm.vue";
 
 export default {
   name: "Auth",
   components: {
-    AppLoginForm,
-    AppRegisterForm,
+    LoginForm,
+    RegisterForm,
   },
   data() {
     return {
@@ -88,13 +89,16 @@ export default {
     };
   },
   computed: {
-    // ...mapState({
-    //   modal: 'authModalShow',
-    // }),
     ...mapState(["authModalShow"]),
+    currentFormComponent() {
+      return this.tab === "login" ? "LoginForm" : "RegisterForm";
+    },
   },
   methods: {
     ...mapMutations(["toggleAuthModal"]),
+    setTab(tab) {
+      this.tab = tab;
+    },
   },
 };
 </script>

@@ -24,7 +24,7 @@
       <!-- Progess Bars -->
       <div class="mb-4" v-for="upload in uploads" :key="upload.name">
         <!-- File Name -->
-        <div class="font-bold text-sm" :class="upload.text_class">
+        <div :class="upload.text_class">
           <i :class="upload.icon"></i> {{ upload.name }}
         </div>
         <div class="flex h-4 overflow-hidden bg-gray-200 rounded">
@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import { storage, auth, songsCollection } from "@/includes/firebase";
+import { storage, auth, songsCollection } from "@/utils/firebase";
 
 export default {
   name: "Upload",
@@ -81,20 +81,16 @@ export default {
       files.forEach((file) => {
         if (!this.audioTypes.includes(file.type)) {
           console.log(file.type);
-          console.log("regecting file", file.name);
+          console.log("rejecting file", file.name);
           return;
         }
 
         const firstPart = file.name.split(".")[0];
         const lastPart = file.name.split(".")[1];
 
-        const storageRef = storage.ref(); // music-c2596.appspot.com
+        const storageRef = storage.ref();
+        const songsRef = storageRef.child(`songs/${firstPart}.${lastPart}`);
 
-        const songsRef = storageRef.child(
-          // split file name by "." and get the last part
-
-          `songs/${firstPart}.${lastPart}`
-        ); // music-c2596.appspot.com/songs/example.mp3
         const task = songsRef.put(file);
         const uploadIndex =
           this.uploads.push({
@@ -105,6 +101,7 @@ export default {
             icon: "fas fa-spinner fa-spin",
             text_class: "",
           }) - 1;
+
         task.on(
           "state_changed",
           (snapshot) => {

@@ -23,9 +23,15 @@
     "login": "ログイン",
     "email": "メールアドレス",
     "password": "パスワード",
-    "submit": "送信"
+    "submit": "送信",
+    "pleaseWait": "お待ちください",
+    "invalidDetails": "メールアドレスかパスワードが間違っています",
+    "successLoggedIn": "ログインしました"
   },
-
+  "locales": {
+    "english": "English",
+    "japanese": "日本語"
+  },
   "register": {
     "register": "新規登録",
     "email": "メールアドレス",

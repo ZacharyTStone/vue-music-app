@@ -44,12 +44,9 @@
         <!-- only create the song time if the song's type is the same as the current states current song type-->
         <ol id="playlist">
           <app-song-item
-            v-for="song in songs"
+            v-for="song in filteredSongs"
             :song="song"
             :key="song.id"
-            v-show="
-              song.type == this.currentSongType || this.currentSongType == 'all'
-            "
           />
         </ol>
         <!-- .. end Playlist -->
@@ -60,7 +57,7 @@
 
 <script>
 import { mapState } from "vuex";
-import { songsCollection } from "@/includes/firebase";
+import { songsCollection } from "@/utils/firebase";
 import AppSongItem from "@/components/AppSongItem.vue";
 import IconSecondary from "@/directives/icon-secondary";
 import SongTypePanel from "../components/SongTypePanel.vue";
@@ -87,6 +84,12 @@ export default {
     ...mapState({
       currentSongType: (state) => state.currentSongType,
     }),
+    filteredSongs() {
+      return this.songs.filter(
+        (song) =>
+          song.type === this.currentSongType || this.currentSongType === "all"
+      );
+    },
   },
 
   async created() {

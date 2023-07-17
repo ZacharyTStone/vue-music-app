@@ -19,10 +19,12 @@ import {
 
 export default {
   install(app) {
+    // Register VeeValidate components
     app.component("VeeForm", VeeForm);
     app.component("VeeField", VeeField);
     app.component("ErrorMessage", ErrorMessage);
 
+    // Define rules
     defineRule("required", required);
     defineRule("tos", required);
     defineRule("min", min);
@@ -35,6 +37,7 @@ export default {
     defineRule("excluded", excluded);
     defineRule("country_excluded", excluded);
 
+    // Configure VeeValidate
     configure({
       generateMessage: (ctx) => {
         const messages = {
@@ -52,10 +55,8 @@ export default {
           tos: "You must accept the Terms of Service.",
         };
 
-        const message = messages[ctx.rule.name]
-          ? messages[ctx.rule.name]
-          : `The field ${ctx.field} is invalid.`;
-
+        const message =
+          messages[ctx.rule.name] || `The field ${ctx.field} is invalid.`;
         return message;
       },
       validateOnBlur: true,
